@@ -1,8 +1,6 @@
 import throttle from 'lodash.throttle';
 
 const form = document.querySelector('form');
-const email = document.querySelector('input');
-const message = document.querySelector('textarea');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
@@ -30,9 +28,7 @@ form.addEventListener
           
         event.currentTarget.reset();
         
-        localStorage.removeItem(LOCALSTORAGE_KEY);
-
-        
+        localStorage.clear();
      }
 );
 
