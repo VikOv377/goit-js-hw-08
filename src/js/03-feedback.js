@@ -22,12 +22,12 @@ form.addEventListener
      event => {
         event.preventDefault();
 
-        console.log({ email: email.value, message: message.value });
-        
         const {
             elements: { email, message },
           } = event.currentTarget;
           
+        console.log({ email: email.value, message: message.value });
+        
         event.currentTarget.reset();
         
         localStorage.remove(LOCALSTORAGE_KEY);
