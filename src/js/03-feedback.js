@@ -34,6 +34,7 @@ form.addEventListener
         formData.forEach((value, name) => {
         formData[name] = value;
           });
+          
         console.log(formData);
           
         event.currentTarget.reset();
