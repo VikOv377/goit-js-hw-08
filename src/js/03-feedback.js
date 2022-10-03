@@ -20,28 +20,30 @@ form.addEventListener
 (
     'submit',
      event => {
-        event.preventDefault();
+      console.log({ email: email.value, message: message.value });
+      
+      event.preventDefault();
 
         const {
             elements: { email, message },
           } = event.currentTarget;
           
-        console.log({ email: email.value, message: message.value });
-        
         event.currentTarget.reset();
         
-        localStorage.remove(LOCALSTORAGE_KEY);
+        localStorage.removeItem(LOCALSTORAGE_KEY);
+
+        
      }
 );
 
-const storageData = localStorage.getItem(LOCALSTORAGE_KEY);
-const parsedStorage = JSON.parse(storageData);
+function localStorageData () {
+  const data = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  const email = document.querySelector(LOCALSTORAGE_KEY);
+  const message = document.querySelector(LOCALSTORAGE_KEY);
+  
+  if (data) {
+    email.value = data.email;
+    message.value = data.message;
+  }
 
-const fillUpForm = () => {
-    if (parsedStorage !== null) {
-      input.value = parseStorage.email;
-      textarea.value = parseStorage.message;
-    }
-  };
-
-fillUpForm();
+};
