@@ -29,6 +29,12 @@ form.addEventListener
             elements: { email, message },
           } = event.currentTarget;
         console.log({ email: email.value, message: message.value });
+
+        const formData = new FormData(e.currentTarget);
+        formData.forEach((value, name) => {
+        formData[name] = value;
+          });
+        console.log(formData);
           
         event.currentTarget.reset();
         
@@ -45,5 +51,4 @@ function localStorageData () {
     email.value = data.email;
     message.value = data.message;
   }
-
 };
