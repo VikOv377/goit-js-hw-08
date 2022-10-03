@@ -30,12 +30,11 @@ form.addEventListener
           } = event.currentTarget;
         console.log({ email: email.value, message: message.value });
 
-        const formData = new FormData(event.currentTarget);
-        formData.forEach((value, name) => {
-        formData[name] = value;
+        const formDataInConsole = new formDataInConsole(event.currentTarget);
+        formDataInConsole.forEach((value, name) => {
+        formDataInConsole[name] = value;
           });
-          
-        console.log(formData);
+        console.log(formDataInConsole);
           
         event.currentTarget.reset();
         
