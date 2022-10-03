@@ -8,7 +8,10 @@ form.addEventListener
 (
     'input', 
     throttle(event => {
-        const dataToSave = { email: email.value, message: message.value }
+      const dataToSave = {
+        email: form.elements.email.value,
+        message: form.elements.message.value,
+      };
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(dataToSave));
     }, 500)
 
