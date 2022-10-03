@@ -23,13 +23,12 @@ form.addEventListener
 (
     'submit',
      event => {
-      console.log({ email: email.value, message: message.value });
-      
       event.preventDefault();
 
         const {
             elements: { email, message },
           } = event.currentTarget;
+        console.log({ email: email.value, message: message.value });
           
         event.currentTarget.reset();
         
