@@ -33,10 +33,11 @@ form.addEventListener
         const formData = new FormData(e.currentTarget);
         formData.forEach((value, name) => {
         formData[name] = value;
-        });
+          });
         console.log(formData);
           
         event.currentTarget.reset();
+        
         localStorage.clear();
      }
 );
