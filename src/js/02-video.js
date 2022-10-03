@@ -6,7 +6,7 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-/* Використання методу on, відслідження часу оновлення програвання timeupdate,
+/* Використання методу on, відсліджування часу оновлення програвання timeupdate,
 зберігання часу програвання в localStorage. */
 
 player.on('timeupdate', throttle(onUpdatedTime, 1000));
