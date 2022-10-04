@@ -5,7 +5,7 @@ import throttle from 'lodash.throttle';
 
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
-const STORAGE_KEY = "videoplayer-current-time";
+const STORAGE_CURRENT_TIME_KEY = "videoplayer-current-time";
 
 /* Використання методу on, відсліджування часу оновлення програвання timeupdate,
 зберігання часу програвання в localStorage. */
@@ -13,19 +13,20 @@ const STORAGE_KEY = "videoplayer-current-time";
 player.on('timeupdate', throttle(onUpdatedTime, 1000));
 
 function onUpdatedTime ({ seconds }) {
-    localStorage.setItem(STORAGE_KEY, seconds)
+    localStorage.setItem(STORAGE_CURRENT_TIME_KEY, seconds)
   };
 
 /*Використання методу setCurrentTime() при перезгрузці сторінки, для того щоб відео розпочиналось зі 
 збереженого моменту */
 
-const savedCurrantTime = localStorage.getItem(STORAGE_KEY);
+const savedCurrentTime = localStorage.getItem(STORAGE_CURRENT_TIME_KEY);
+const initialTime = 0;
 
-if (savedCurrantTime !== null) {
+if (savedCurrentTime !== null) {
   player
-  .setCurrentTime(savedCurrantTime)
-  .catch(function (error) {
-    console.error(error);
-    }
-  );
+  .setCurrentTime(savedCurrentTime);
+} else {
+  return initialTime;
 };
+
+/*------Запасний варіант без setCurrentTime в USEFUL.md-----*/
